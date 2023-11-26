@@ -26,7 +26,7 @@ public class UserController {
 
     @GetMapping("/new")
     public String newPerson(@ModelAttribute("user") User user) {
-        return "users/new";
+        return "users/updateUser";
     }
 
     @PostMapping()
@@ -39,12 +39,6 @@ public class UserController {
     public String editUser(@RequestParam("id") int id, Model model) {
         model.addAttribute("user", userService.getUser(id));
         return "users/updateUser";
-    }
-
-    @PatchMapping("/update")
-    public String updateUser(@ModelAttribute("user") User user) {
-        userService.update(user);
-        return "redirect:/users";
     }
 
     @GetMapping("/delete")
