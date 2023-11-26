@@ -4,10 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import ru.yunusov.springmvchibernate.dao.UserDaoImpl;
 import ru.yunusov.springmvchibernate.models.User;
 import ru.yunusov.springmvchibernate.services.UserService;
-import ru.yunusov.springmvchibernate.services.UserServiceImpl;
 
 @Controller
 @RequestMapping("/users")
