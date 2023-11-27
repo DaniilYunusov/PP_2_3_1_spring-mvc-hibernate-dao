@@ -1,8 +1,10 @@
 package ru.yunusov.springmvchibernate.controllers;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ru.yunusov.springmvchibernate.models.User;
 import ru.yunusov.springmvchibernate.services.UserService;
@@ -30,7 +32,10 @@ public class UserController {
     }
 
     @PostMapping()
-    public String createNewUser(@ModelAttribute("user") User user) {
+    public String createNewUser(@ModelAttribute("user") @Valid User user, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "users/updateUser";
+        }
         userService.save(user);
         return "redirect:/users";
     }

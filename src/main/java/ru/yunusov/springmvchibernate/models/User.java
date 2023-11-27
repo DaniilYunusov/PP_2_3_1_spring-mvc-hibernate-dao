@@ -1,6 +1,7 @@
 package ru.yunusov.springmvchibernate.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 
 @Entity
 @Table(name = "users")
@@ -10,10 +11,18 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "age")
+    @Min(value = 0, message = "Age should be greater than zero!")
+    @Max(value = 200, message = "Invalid age value. Age can't matter that much!")
     private int age;
     @Column(name = "name")
+    @NotEmpty(message = "Name should not be empty!")
+    @Size(min = 2, max = 20, message = "Name should be between 2 and 20 characters!")
+    @Pattern(regexp = "[A-Z]\\w+",
+            message = "The name must start with a capital letter and have only alphabetic characters!")
     private String name;
     @Column(name = "email")
+    @NotEmpty(message = "Email should not be empty!")
+    @Email(message = "Email should be valid!")
     private String email;
 
     public User(){

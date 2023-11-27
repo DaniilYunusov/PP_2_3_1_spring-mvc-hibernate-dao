@@ -9,7 +9,6 @@ import ru.yunusov.springmvchibernate.models.User;
 import java.util.List;
 
 @Repository
-@Transactional(readOnly = true)
 public class UserDaoImpl implements UserDao{
 
     @PersistenceContext
@@ -26,12 +25,10 @@ public class UserDaoImpl implements UserDao{
     }
 
     @Override
-    @Transactional
     public void save(User user) {
         entityManager.merge(user);
     }
     @Override
-    @Transactional
     public void delete(int id) {
         entityManager.remove(entityManager.find(User.class, id));
     }

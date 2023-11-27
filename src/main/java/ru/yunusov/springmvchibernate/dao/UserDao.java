@@ -5,8 +5,8 @@ import ru.yunusov.springmvchibernate.models.User;
 import java.util.List;
 
 public interface UserDao {
-    public List<User> getUsers();
-    public User getUser(int id);
-    public void save(User user);
-    public void delete(int id);
+     List<User> getUsers();
+     User getUser(int id);
+     void save(User user);
+     void delete(int id);
 }
